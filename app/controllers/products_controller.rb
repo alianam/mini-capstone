@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
     render 'show.html.erb'
   end
 
-  def new_product
-    render 'new-product-form.html.erb'
+  def new
+    render 'create.html.erb'
   end
 
-  def product_created
+  def create
     @product1 = Product.new({name: params["product_name"], price: params["product_price"], image: params["product_image"], description: params["product_description"]})
     @product1.save
     render 'product-created.html.erb'
