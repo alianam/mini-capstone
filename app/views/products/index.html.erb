@@ -1,8 +1,10 @@
-<h2>Here are all of the products currently in stock:</h2>
+<h2>Here are the products currently in stock:</h2>
 
 <% @all_products.each do |product| %>
-  <p><%= product.name %></p>
-  <p><%= product.price %></p>
+  <h3><a href="products/<%= product.id %>"> <%= product.name %></a></h3>
+  <p>$<%= product.price %></p>
     <p><%= product.description %></p>
     <hr>
 <% end %>
+
+<!-- get a product id and assign it to a variable to link above -->

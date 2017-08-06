@@ -4,6 +4,12 @@ class ProductsController < ApplicationController
     render 'index.html.erb'
   end
 
+  def show
+    url_id = params[:id]
+    @product = Product.find_by(id: url_id)
+    render 'show.html.erb'
+  end
+
   def new_product
     render 'new-product-form.html.erb'
   end
