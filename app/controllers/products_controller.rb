@@ -11,13 +11,19 @@ class ProductsController < ApplicationController
   end
 
   def new
-    render 'create.html.erb'
+    render 'new.html.erb'
   end
 
   def create
-    @product1 = Product.new({name: params["product_name"], price: params["product_price"], image: params["product_image"], description: params["product_description"]})
+    @product1 = Product.new(
+      name: params["product_name"],
+      price: params["product_price"],
+      image: params["product_image"],
+      description: params["product_description"]
+    )
     @product1.save
-    render 'product-created.html.erb'
+    flash[:success] = "You've just created a new product: #{@product1.name}."
+    redirect_to "/products/#{@product1.id}"
   end
 
   def edit
@@ -32,12 +38,15 @@ class ProductsController < ApplicationController
       image: params["product_image"], 
       description: params["product_description"]
       )
-    render 'show.html.erb'
+    flash[:info] = "Wooooo you've successfully updated #{@product.name}."
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     product = Product.find_by(id: params[:id])
     product.destroy
-    render 'index.html.erb'
+    flash[:danger] = "Awww man. You've deleted #{product.name}."
+    redirect_to "/products"
+    # render 'index.html.erb'
   end
 end

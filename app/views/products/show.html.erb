@@ -1,8 +1,14 @@
-I am the show page
+<!-- I am the show page -->
 <h3><%= @product.name %></h3>
 <p><%= @product.price %></p>
 <p><%= @product.description %></p>
 
+<%= form_tag "/products/#{@product.id}/edit", method: :get do %>
+  <input type="submit" value="Edit Product">
+<% end %>
+
+<hr>
+
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
-<p><input type="submit" value="Delete! (be careful)"></p>
+  <p><input type="submit" value="Delete! (be careful)"></p>
 <% end %>
