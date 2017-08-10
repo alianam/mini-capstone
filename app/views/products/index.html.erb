@@ -1,11 +1,14 @@
 <h2>Here are the products currently in stock:</h2>
-
-<% @all_products.each do |product| %>
-  <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
-  <p>$<%= product.price %></p>
-    <p><%= product.description %></p>
-    <hr>
-<% end %>
+  <% @all_products.each do |product| %>
+    <div class="col-md-3">
+      <div class="well">
+      <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
+      <p>$<%= product.price %></p>
+      <img src="<%= product.image %>"
+      <p><%= product.description %></p>
+      </div>
+    </div>
+  <% end %>
 
 <!-- get a product id and assign it to a variable to link above -->
 <%= form_tag "/products/new", method: :get do %>
