@@ -1,6 +1,9 @@
 <!-- I am the show page -->
 <h3><%= @product.name %></h3>
-<p><%= @product.price %></p>
+<p><strong>Price: $</strong><%= @product.price %></p>
+<p>Plus tax: $<%= @product.tax %></p>
+<p <%= "class="discount"" if @product.total < 10 %>><strong>Total Price: $</strong><%= @product.total %></p>
+<p><strong><%= @product.sale_message %></strong></p>
 <p><%= @product.description %></p>
 
 <%= form_tag "/products/#{@product.id}/edit", method: :get do %>
