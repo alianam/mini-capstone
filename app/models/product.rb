@@ -8,10 +8,30 @@ class Product < ApplicationRecord
   end
 
   def tax
-    (price * 0.09).round(3)
+    (price * 0.09).round(2)
   end
 
   def total
     price + tax
   end
+
+  def stock_boolean
+    if in_stock == true
+      "Yes"
+    else
+      "No, sorry."
+    end
+  end
+
+  # def self.expensive
+  #   where(price: 30)
+  # end
+
+  # def self.myself
+  #   self
+  # end
+
+  # def instance_self
+  #   self
+  # end
 end

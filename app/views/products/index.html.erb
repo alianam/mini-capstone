@@ -4,7 +4,8 @@
       <div class="well">
       <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
       <p>$<%= product.price %></p>
-      <img src="<%= product.image %>"
+      <p>In Stock: <%= product.in_stock %></p>
+      <img src="<%= product.image %>">
       <p><%= product.description %></p>
       </div>
     </div>

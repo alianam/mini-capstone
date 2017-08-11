@@ -1,10 +1,13 @@
 <!-- I am the show page -->
 <h3><%= @product.name %></h3>
-<p><strong>Price: $</strong><%= @product.price %></p>
-<p>Plus tax: $<%= @product.tax %></p>
-<p <%= "class="discount"" if @product.total < 10 %>><strong>Total Price: $</strong><%= @product.total %></p>
+<p><img src="<%= @product.image%>"></p>
+<p><strong>Price: </strong><%= number_to_currency(@product.price) %></p>
+<p>Plus tax: <%= number_to_currency(@product.tax) %></p>
+<p><strong>Total Price: </strong><%= number_to_currency(@product.total) %></p>
 <p><strong><%= @product.sale_message %></strong></p>
+<p><strong>In Stock: </strong><%= @product.stock_boolean %></p>
 <p><%= @product.description %></p>
+
 
 <%= form_tag "/products/#{@product.id}/edit", method: :get do %>
   <input type="submit" value="Edit Product">
