@@ -6,7 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-50.times do
-  product1 = Product.new({name: Faker::Commerce.product_name, price: Faker::Commerce.price, image: Faker::Avatar.image, description: Faker::Commerce.color})
-  product1.save
+# 50.times do
+#   product1 = Product.new({name: Faker::Commerce.product_name, price: Faker::Commerce.price, image: Faker::Avatar.image, description: Faker::Commerce.color})
+#   product1.save
+# end
+
+
+products = Product.all
+images = Image.all
+
+products.each do |product|
+  product.update(image_id: images.sample.id)
 end
+
+# 100.times do
+#   image1 = Image.new(url: Faker::Avatar.image)
+#   image1.save!
+# end
