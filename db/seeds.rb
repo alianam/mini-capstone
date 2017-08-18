@@ -13,10 +13,11 @@
 
 
 products = Product.all
-images = Image.all
 
 products.each do |product|
-  product.update(image_id: images.sample.id)
+  3.times do
+    image1 = Image.new(url: Faker::Avatar.image, product: product).save!
+  end
 end
 
 # 100.times do

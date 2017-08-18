@@ -5,7 +5,7 @@
       <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
       <p>$<%= product.price %></p>
       <p>In Stock: <%= product.in_stock %></p>
-      <img src="<%= product.image %>">
+      <img src="<%= product.images[0].url %>">
       <p><%= product.description %></p>
       </div>
     </div>

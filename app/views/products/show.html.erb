@@ -1,6 +1,8 @@
 <!-- I am the show page -->
 <h3><%= @product.name %></h3>
-<p><img src="<%= @product.image_id.url %>"></p>
+<% @product.images.each do |image|%>
+<p><img src="<%= image.url %>"></p>
+<% end %>
 <p>Supplier: <%= @product.supplier.name %></p>
 <p><strong>Price: </strong><%= number_to_currency(@product.price) %></p>
 <p>Plus tax: <%= number_to_currency(@product.tax) %></p>
