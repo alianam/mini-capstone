@@ -3,6 +3,7 @@
 <% @product.images.each do |image|%>
 <p><img src="<%= image.url %>"></p>
 <% end %>
+<p>Product ID: <%= @product.id%></p>
 <p>Supplier: <%= @product.supplier.name %></p>
 <p><strong>Price: </strong><%= number_to_currency(@product.price) %></p>
 <p>Plus tax: <%= number_to_currency(@product.tax) %></p>
@@ -11,7 +12,19 @@
 <p><strong>In Stock: </strong><%= @product.stock_boolean %></p>
 <p><%= @product.description %></p>
 
+<%= form_tag "/orders", method: :post do %>
+  <p>Quantity: <input type="text" name="quantity" placeholder="Enter a number"></p>
+  <p>Product ID: <input type="integer" name="product_id" placeholder="Enter a product_id"></p>
+  <input type="submit" value="Buy Now!">
+<% end %>
 
+
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
 <%= form_tag "/products/#{@product.id}/edit", method: :get do %>
   <input type="submit" value="Edit Product">
 <% end %>
