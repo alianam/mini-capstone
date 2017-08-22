@@ -1,4 +1,10 @@
-<h1>This is your order confirmation</h1>
+<!-- <h1>This is your order confirmation</h1> -->
 
-<p>Order: <%= @order.id %></p>
-<p>Quantity: <%= @quantity %></p>
+<h1> Your Order </h1>
+<p>Email: <%= @order.user.email %></p>
+<p>Order ID: <%= @order_id %></p>
+<p>Product ID: <%= @order.product_id %></p>
+<p>Order Quantity <%= @quantity %> </p>
+<p>Order Subtotal <%= @order.subtotal %> </p>
+<p>Order Tax <%= @order.tax %> </p>
+<p>Order Total <%= @order.total %> </p>

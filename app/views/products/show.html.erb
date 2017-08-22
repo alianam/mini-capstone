@@ -14,7 +14,7 @@
 
 <%= form_tag "/orders", method: :post do %>
   <p>Quantity: <input type="text" name="quantity" placeholder="Enter a number"></p>
-  <p>Product ID: <input type="integer" name="product_id" placeholder="Enter a product_id"></p>
+  <p><input type="hidden" name="product_id" value="<%= @product.id %>"></p>
   <input type="submit" value="Buy Now!">
 <% end %>
 

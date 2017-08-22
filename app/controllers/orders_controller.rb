@@ -1,9 +1,14 @@
 class OrdersController < ApplicationController
   def create
+    product = Product.find_by(id: params[:product_id])
+    quantity = params[:quantity].to_i
     order = Order.new(
-      product_id: params[:product_id],
+      user_id: current_user.id,
       quantity: params[:quantity],
-      user_id: session[:user_id],
+      product_id: params[:product_id],
+      subtotal: product.price * quantity,
+      tax: product.tax * quantity,
+      total: product.total * quantity
     )
     order.save
     redirect_to "/orders/#{order.id}"
@@ -17,6 +22,3 @@ class OrdersController < ApplicationController
     render 'show.html.erb'
   end
 end
-
-
-# order = Order.find_by(order_id: params[:order_id])
