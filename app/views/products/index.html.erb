@@ -1,5 +1,5 @@
 <h2>Here are the products currently in stock:</h2>
-  <% @all_products.each do |product| %>
+  <% @products.each do |product| %>
     <div class="col-md-3">
       <div class="well">
       <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
