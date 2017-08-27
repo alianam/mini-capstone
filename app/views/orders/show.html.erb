@@ -3,8 +3,8 @@
 <h1> Your Order </h1>
 <p>Email: <%= @order.user.email %></p>
 <p>Order ID: <%= @order_id %></p>
-<p>Product ID: <%= @order.product_id %></p>
-<p>Order Quantity <%= @quantity %> </p>
-<p>Order Subtotal <%= @order.subtotal %> </p>
-<p>Order Tax <%= @order.tax %> </p>
-<p>Order Total <%= @order.total %> </p>
+<% @order.products.each do |product| %>
+  <p>Item: <%= product.name %></p>
+  <p>Quantity: <%= @order.carted_products.find_by(product_id: product.id).quantity %></p>
+<% end %>
+

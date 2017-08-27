@@ -4,7 +4,6 @@
 <p><img src="<%= image.url %>"></p>
 <% end %>
 <p>Product ID: <%= @product.id%></p>
-<p>Supplier: <%= @product.supplier.name %></p>
 <p><strong>Price: </strong><%= number_to_currency(@product.price) %></p>
 <p>Plus tax: <%= number_to_currency(@product.tax) %></p>
 <p><strong>Total Price: </strong><%= number_to_currency(@product.total) %></p>
@@ -12,25 +11,25 @@
 <p><strong>In Stock: </strong><%= @product.stock_boolean %></p>
 <p><%= @product.description %></p>
 
-<%= form_tag "/cart", method: :post do %>
-  <p>Quantity: <input type="text" name="quantity" placeholder="Enter a number"></p>
-  <p><input type="hidden" name="product_id" value="<%= @product.id %>"></p>
-  <input type="submit" value="Add To Cart">
+<% if current_user %>
+  <%= form_tag "/cart", method: :post do %>
+    <p>Quantity: <input type="text" name="quantity" placeholder="Enter a number"></p>
+    <p><input type="hidden" name="product_id" value="<%= @product.id %>"></p>
+    <input type="submit" value="Add To Cart">
+  <% end %>
 <% end %>
-
-
 <hr>
 <br>
 <br>
 <br>
 <br>
 <br>
-<%= form_tag "/products/#{@product.id}/edit", method: :get do %>
-  <input type="submit" value="Edit Product">
-<% end %>
-
-<hr>
-
-<%= form_tag "/products/#{@product.id}", method: :delete do %>
-  <p><input type="submit" value="Delete! (be careful)"></p>
+<% if current_user && current_user.admin %>
+  <%= form_tag "/products/#{@product.id}/edit", method: :get do %>
+    <input type="submit" value="Edit Product">
+  <% end %>
+  <hr>
+  <%= form_tag "/products/#{@product.id}", method: :delete do %>
+    <p><input type="submit" value="Delete! (be careful)"></p>
+  <% end %>
 <% end %>

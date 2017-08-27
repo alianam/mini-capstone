@@ -1,10 +1,22 @@
-Form for editing here
+<h2>Edit:</h2>
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+ 
+    <ul>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_tag "/products/#{@product.id}", method: :patch do %>
   <p>Product Name<input type="text" name="product_name" value="<%= @product.name %>"></p>
   <p>Price<input type="integer" name="product_price" value="<%= @product.price %>"></p>
-  <p>Image<input type="string" name="product_image" value="<%= @product.image %>"></p>
+  <p>Image<input type="string" name="product_image" value="<%= @product.images.first.url %>"></p>
   <p>Description <input type="string" name="product_description" value="<%= @product.description%>"></p>
   <p>In Stock: <input type="string" name="in_stock" value="<%= @product.in_stock%>"></p>
   <p><input type="submit" value="Submit Edit"></p>
 <% end %>
+
